@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "types": [
+      "cypress",
+      "./cypress/support/index.d.ts"
+    ]
+  }
+}
