@@ -5,12 +5,6 @@ class SideBar {
     );
   };
 
-  getSideBarStudent = () => {
-    return cy.get(
-      "#menu-students > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root"
-    );
-  };
-
   getSideBarContact = () => {
     return cy.get(
       "#menu-upload > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root"
@@ -21,8 +15,10 @@ class SideBar {
     return this.getSideBarLogin();
   };
 
-  sideBarStudent = () => {
-    return this.getSideBarStudent();
+  gotoStudents = () => {
+    return cy.get(
+      "#menu-students > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root"
+    ).click();
   };
 
   sideBarContact = () => {
