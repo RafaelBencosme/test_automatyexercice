@@ -16,18 +16,6 @@ class SideBar {
       "#menu-upload > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root"
     );
   };
-
-  sideBarLogin = () => {
-    return this.getSideBarLogin();
-  };
-
-  sideBarStudent = () => {
-    return this.getSideBarStudent();
-  };
-
-  sideBarContact = () => {
-    return this.getSideBarContact();
-  };
 }
 
 export default SideBar;

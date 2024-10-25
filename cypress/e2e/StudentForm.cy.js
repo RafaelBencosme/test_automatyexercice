@@ -1,141 +1,55 @@
 class StudentForm {
-  getFirstName = () => {
-    return cy.get("#firstName");
-  };
+  Fill = (firstname, lastname, email, gender, phone, dateOfBirth) => {
+    const validGender = ['male', 'female', 'other'];
 
-  getLastName = () => {
-    return cy.get("#lastName");
-  };
+    if (!validGender.includes(gender)){
+      throw new Error("Invalid gender provided. It should be 'male', 'female', or 'other'.");
+    }
 
-  getEmail = () => {
-    return cy.get("#email");
-  };
+    cy.get("#firstName").type(firstname);
+    cy.get("#lastName").type(lastname);
+    cy.get("#email").type(email);
+    cy.get(`#gender-${gender} > .MuiButtonBase-root > .PrivateSwitchBase-input`).click();
+    cy.get("#phone").type(phone);
+    cy.get("#\\:r8\\:").type(dateOfBirth);
+    cy.get(".MuiAutocomplete-endAdornment > .MuiButtonBase-root").click();
+    cy.get("#province-autocomplete-option-0").click();
+};
 
-  getGenderMale = () => {
-    return cy.get(
-      "#gender-male > .MuiButtonBase-root > .PrivateSwitchBase-input"
-    );
-  };
-
-  getGenderFemale = () => {
-    return cy.get(
-      "#gender-female > .MuiButtonBase-root > .PrivateSwitchBase-input"
-    );
-  };
-
-  getGenderOther = () => {
-    return cy.get(
-      "#gender-other > .MuiButtonBase-root > .PrivateSwitchBase-input"
-    );
-  };
-
-  getPhone = () => {
-    return cy.get("#phone");
-  };
-
-  getBirthDate = () => {
-    return cy.get("#\\:r8\\:");
-  };
-
-  getRegisterButton = () => {
-    return cy.get("#register");
+  register = () => {
+    return cy.get("#register").click();
   };
 
   getRegisteredText = () => {
-    return cy.contains("Thanks for applying");
-  };
-
-  getInvalidFirstNameText = () => {
-    return cy.get("#firstName-helper-text");
-  };
-
-  getInvalidLastNameText = () => {
-    return cy.get("#lastName-helper-text");
-  };
-
-  getInvalidEmailText = () => {
-    return cy.get("#email-helper-text");
-  };
-
-  getInvalidPhoneText = () => {
-    return cy.get("#phone-helper-text");
-  };
-
-  getInvalidBirthDateText = () => {
-    return cy.get("#\\:r8\\:-helper-text");
-  };
-
-  getInvalidProvinceText = () => {
-    return cy.get("#province-provinces-helper-text");
-  };
-
-  FillMale = (firstname, lastname, email, phone, dateOfBirth) => {
-    this.getFirstName().type(firstname);
-    this.getLastName().type(lastname);
-    this.getEmail().type(email);
-    this.getGenderMale().click();
-    this.getPhone().type(phone);
-    this.getBirthDate().type(dateOfBirth);
-    cy.get(".MuiAutocomplete-endAdornment > .MuiButtonBase-root").click();
-    cy.get("#province-autocomplete-option-0").click();
-  };
-
-  FillFemale = (firstname, lastname, email, phone, dateOfBirth) => {
-    this.getFirstName().type(firstname);
-    this.getLastName().type(lastname);
-    this.getEmail().type(email);
-    this.getGenderFemale().click();
-    this.getPhone().type(phone);
-    this.getBirthDate().type(dateOfBirth);
-    cy.get(".MuiAutocomplete-endAdornment > .MuiButtonBase-root").click();
-    cy.get("#province-autocomplete-option-0").click();
-  };
-
-  FillOther = (firstname, lastname, email, phone, dateOfBirth) => {
-    this.getFirstName().type(firstname);
-    this.getLastName().type(lastname);
-    this.getEmail().type(email);
-    this.getGenderOther().click();
-    this.getPhone().type(phone);
-    this.getBirthDate().type(dateOfBirth);
-    cy.get(".MuiAutocomplete-endAdornment > .MuiButtonBase-root").click();
-    cy.get("#province-autocomplete-option-0").click();
-  };
-
-  register = () => {
-    return this.getRegisterButton();
-  };
-
-  registeredText = () => {
-    return this.getRegisteredText();
+    return cy.contains("Thanks for");
   };
 
   birthDateClear = () => {
-    this.getBirthDate().clear();
+    cy.get("#\\:r8\\:").clear();
   };
 
-  invalidFirstName = () => {
-    return this.getInvalidFirstNameText();
+  getInvalidFirstName = () => {
+    return cy.get("#firstName-helper-text");
   };
 
-  invalidLastName = () => {
-    return this.getInvalidLastNameText();
+  getInvalidLastName = () => {
+    return cy.get("#lastName-helper-text");
   };
 
-  invalidEmail = () => {
-    return this.getInvalidEmailText();
+  getInvalidEmail = () => {
+    return cy.get("#email-helper-text");
   };
 
-  invalidPhone = () => {
-    return this.getInvalidPhoneText();
+  getInvalidPhone = () => {
+    return cy.get("#phone-helper-text");
   };
 
-  invalidBirthDate = () => {
-    return this.getInvalidBirthDateText();
+  getInvalidBirthDate = () => {
+    return cy.get("#\\:r8\\:-helper-text");
   };
 
-  invalidProvince = () => {
-    return this.getInvalidProvinceText();
+  getInvalidProvince = () => {
+    return cy.get("#province-provinces-helper-text");
   };
 }
 
