@@ -1,4 +1,4 @@
-class StudentForm {
+class Student {
   Fill = (firstname, lastname, email, gender, phone, dateOfBirth) => {
     const validGender = ['male', 'female', 'other'];
 
@@ -16,41 +16,29 @@ class StudentForm {
     cy.get("#province-autocomplete-option-0").click();
 };
 
-  register = () => {
-    return cy.get("#register").click();
+get alerts() {
+
+  return [
+    cy.get("#firstName-helper-text"),
+    cy.get("#lastName-helper-text"),
+    cy.get("#email-helper-text"),
+    cy.get("#phone-helper-text"),
+    cy.get("#\\:r8\\:-helper-text"),
+    cy.get("#province-provinces-helper-text"),
+  ]
+}
+
+  register() {
+   cy.get("#register").click();
   };
 
-  getRegisteredText = () => {
+  get registeredToast() {
     return cy.contains("Thanks for");
   };
 
-  birthDateClear = () => {
+  clearBirthDate() {
     cy.get("#\\:r8\\:").clear();
-  };
-
-  getInvalidFirstName = () => {
-    return cy.get("#firstName-helper-text");
-  };
-
-  getInvalidLastName = () => {
-    return cy.get("#lastName-helper-text");
-  };
-
-  getInvalidEmail = () => {
-    return cy.get("#email-helper-text");
-  };
-
-  getInvalidPhone = () => {
-    return cy.get("#phone-helper-text");
-  };
-
-  getInvalidBirthDate = () => {
-    return cy.get("#\\:r8\\:-helper-text");
-  };
-
-  getInvalidProvince = () => {
-    return cy.get("#province-provinces-helper-text");
   };
 }
 
-export default StudentForm;
+export default Student;

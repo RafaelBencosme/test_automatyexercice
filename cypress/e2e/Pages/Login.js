@@ -5,12 +5,13 @@ class LoginPage {
     cy.get("#sign-in").click();
   };
 
-  getWrongCredentials = () => {
+  get wrongCredentials() {
     return cy.get(".MuiAlert-message");
   };
 
-  getLoginText = () => {
+  get loginText() {
     return cy.get("#title-login");
   };
 }
+
 export default LoginPage;

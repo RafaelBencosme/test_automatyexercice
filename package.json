@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cy.open": "cypress open",
-    "cy.headless": "cypress run",
+    "cy:open": "cypress open",
+    "cy:headless": "cypress run",
     "cypress:open:ci": "cypress open --config-file cypress.ci.json"
   },
   "author": "",

@@ -1,20 +1,20 @@
 class SideBar {
-  getSideBarLogin = () => {
-    return cy.get(
+  sideBarLogin() {
+   cy.get(
       "#menu-login > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root"
-    );
+    ).click();
   };
 
-  getSideBarStudent = () => {
-    return cy.get(
+  sideBarStudent() {
+   cy.get(
       "#menu-students > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root"
-    );
+    ).click();
   };
 
-  getSideBarContact = () => {
-    return cy.get(
+  sideBarContact() {
+   cy.get(
       "#menu-upload > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root"
-    );
+    ).click();
   };
 }
 
